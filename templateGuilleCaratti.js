@@ -40,7 +40,7 @@ main() //acá innicializa el main
 
 
 
-//////EL CÓDIGO QUE ESTÁ ACÁ ABAJO ES EL DE EL UtilsBm//////
+//////EL CÓDIGO QUE ESTÁ ACÁ ABAJO ES EL DE EL //////
 function getGeneralConfig() {
 	return {
       accessToken: 'eyJhbGciOiJIUzUxMiJ9.eyJidXNpbmVzc0lkIjoiRmVyTGVmbG90aFRlc3QiLCJuYW1lIjoiRmVybmFuZG8gTGVmbG90aCIsImFwaSI6dHJ1ZSwiaWQiOiJiZEMxS3oxNGdnZmJRdHA5VmJoT1ZvWmZpYW4yIiwiZXhwIjoxNzczNjE1Njg2LCJqdGkiOiJiZEMxS3oxNGdnZmJRdHA5VmJoT1ZvWmZpYW4yIn0.4jOoAapCdcgV-V3i8XPTcw5MJNPTtorDOVL2H8AlH2EVsdbx_3BeRr7ybrmdYiUATKEYtAZpcwVhsIKJaodSpg'
