@@ -1,211 +1,124 @@
-const fileUpload = require("express-fileupload");
+/*Usually when you buy something, you're asked whether your credit card number, phone number or answer to your most secret question is still correct. However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
+Your task is to write a function maskify, which changes all but the last four characters into '#'.
 
-const response = {
-    "medications":[{
-            "aceInhibitors":[{
-                "name":"lisinopril",
-                "strength":"10 mg Tab",
-                "dose":"1 tab",
-                "route":"PO",
-                "sig":"daily",
-                "pillCount":"#90",
-                "refills":"Refill 3"
-            }],
-            "antianginal":[{
-                "name":"nitroglycerin",
-                "strength":"0.4 mg Sublingual Tab",
-                "dose":"1 tab",
-                "route":"SL",
-                "sig":"q15min PRN",
-                "pillCount":"#30",
-                "refills":"Refill 1"
-            }],
-            "anticoagulants":[{
-                "name":"warfarin sodium",
-                "strength":"3 mg Tab",
-                "dose":"1 tab",
-                "route":"PO",
-                "sig":"daily",
-                "pillCount":"#90",
-                "refills":"Refill 3"
-            }],
-            "betaBlocker":[{
-                "name":"metoprolol tartrate",
-                "strength":"25 mg Tab",
-                "dose":"1 tab",
-                "route":"PO",
-                "sig":"daily",
-                "pillCount":"#90",
-                "refills":"Refill 3"
-            }],
-            "diuretic":[{
-                "name":"furosemide",
-                "strength":"40 mg Tab",
-                "dose":"1 tab",
-                "route":"PO",
-                "sig":"daily",
-                "pillCount":"#90",
-                "refills":"Refill 3"
-            }],
-            "mineral":[{
-                "name":"potassium chloride ER",
-                "strength":"10 mEq Tab",
-                "dose":"1 tab",
-                "route":"PO",
-                "sig":"daily",
-                "pillCount":"#90",
-                "refills":"Reill 3"
-            }]
-        }
-    ],
-    "labs":[{
-        "name":"Arterial Blood Gas",
-        "time":"Today",
-        "location":"Main Hospital Lab"      
-        },
-        {
-        "name":"BMP",
-        "time":"Today",
-        "location":"Primary Care Clinic"    
-        },
-        {
-        "name":"BNP",
-        "time":"3 Weeks",
-        "location":"Primary Care Clinic"    
-        },
-        {
-        "name":"BUN",
-        "time":"1 Year",
-        "location":"Primary Care Clinic"    
-        },
-        {
-        "name":"Cardiac Enzymes",
-        "time":"Today",
-        "location":"Primary Care Clinic"    
-        },
-        {
-        "name":"CBC",
-        "time":"1 Year",
-        "location":"Primary Care Clinic"    
-        },
-        {
-        "name":"Creatinine",
-        "time":"1 Year",
-        "location":"Main Hospital Lab"  
-        },
-        {
-        "name":"Electrolyte Panel",
-        "time":"1 Year",
-        "location":"Primary Care Clinic"    
-        },
-        {
-        "name":"Glucose",
-        "time":"1 Year",
-        "location":"Main Hospital Lab"  
-        },
-        {
-        "name":"PT/INR",
-        "time":"3 Weeks",
-        "location":"Primary Care Clinic"    
-        },
-        {
-        "name":"PTT",
-        "time":"3 Weeks",
-        "location":"Coumadin Clinic"    
-        },
-        {
-        "name":"TSH",
-        "time":"1 Year",
-        "location":"Primary Care Clinic"    
-        }
-    ],
-    "imaging":[{
-        "name":"Chest X-Ray",
-        "time":"Today",
-        "location":"Main Hospital Radiology"    
-        },
-        {
-        "name":"Chest X-Ray",
-        "time":"Today",
-        "location":"Main Hospital Radiology"    
-        },
-        {
-        "name":"Chest X-Ray",
-        "time":"Today",
-        "location":"Main Hospital Radiology"    
-        }
-    ]
+maskify("4556364607935616") == "############5616"
+
+*/
+
+/**function maskify(cc) {
+
+   
+   myCc=[]
+    for(let i=0; cc <= 10; i++){
+        //console.log('Iteracción dentro del CC: ' + i);
+       if (i === 3){
+           
+        console.log('Iterando' + i) 
+        break;
+       }
+    }
+    
+  }
+
+console.log(maskify(5))
+console.log(myCc)
+//console.log(`Este es el masky : ${maskify(123)}`) 
+*/
+/*
+console.log('First!');
+
+setTimeout(function second(){ //Macro Task , se ejecuta una vez que terminen de ejcutarse todas las otras
+    console.log('Timed Out!')
+}, 0000)
+
+console.log('Final!');*/
+
+//////////////////// SIN FUNCIÓN CALLBACK//////////////
+/*const movies = [
+  { title: `A New Hope`, body:`After Princess Leia, the leader of the Rebel Alliance, is held hostage by Darth Vader, Luke and Han Solo must free her and destroy the powerful weapon created by the Galactic Empire.`},
+  { title: `The Empire Strikes Back`, body: `Darth Vader is adamant about turning Luke Skywalker to the dark side. Master Yoda trains Luke to become a Jedi Knight while his friends try to fend off the Imperial fleet.` }
+]
+
+function getMovies(){
+setTimeout(() => {
+  movies.forEach((movie, index) => {
+      console.log(movie.title)
+  })
+}, 1000);
 }
 
-let medications = response.medications
-let pushedMedications = [];
+function createMovies(movie){
+setTimeout(() => {
+  movies.push(movie)
+}, 2000);
+}
+
+getMovies();
 
 
+createMovies({ title: `Return of the Jedi`, body:`Luke Skywalker attempts to bring his father back to the light side of the Force. At the same time, the rebels hatch a plan to destroy the second Death Star.` });
 
 
-medications.forEach(medications=>{
+-------En este caso se renderiza solo dos pelis , porque el createMovies tarda 2 segundos en aparecer y el getMovies solo 1 segundo. Por eso nunca devuelve las 3 películas el getMovies
+*/
 
-    return pushedMedications.push(medications)
+/*-------------------------------------- ASÍ ES COMO FUNCIONA UN CALLBACK , PASANDO UN PARÁMETRO QUE ES UNA FUNCIÓN ----------------------------
+const movies = [
+  { title: `A New Hope`, body:`After Princess Leia, the leader of the Rebel Alliance, is held hostage by Darth Vader, Luke and Han Solo must free her and destroy the powerful weapon created by the Galactic Empire.`},
+  { title: `The Empire Strikes Back`, body: `Darth Vader is adamant about turning Luke Skywalker to the dark side. Master Yoda trains Luke to become a Jedi Knight while his friends try to fend off the Imperial fleet.` }
+]
+
+function getMovies(){
+setTimeout(() => {
+  movies.forEach((movie, index) => {
+      console.log(movie.title)
+  })
+}, 1000);
+}
+
+function createMovies(movie, callback){ //Le pasas como parámetro un callback , que en este caso sería el getMovies
+setTimeout(() => {
+  movies.push(movie);
+  callback();
+}, 2000);
+}
+
+
+createMovies({ title: `Return of the Jedi`, 
+          body:`Luke Skywalker attempts to bring his father back to the light side of the Force. 
+          At the same time, the rebels hatch a plan to destroy the second Death Star.` }, getMovies);*/
+
+
+//-------------------COMO FUNCIONAN LAS PROMISES--------------
+const movies = [
+  { title: `A New Hope`, body:`After Princess Leia, the leader of the Rebel Alliance, is held hostage by Darth Vader, Luke and Han Solo must free her and destroy the powerful weapon created by the Galactic Empire.`},
+  { title: `The Empire Strikes Back`, body: `Darth Vader is adamant about turning Luke Skywalker to the dark side. Master Yoda trains Luke to become a Jedi Knight while his friends try to fend off the Imperial fleet.` }
+]
+
+function getMovies(){
+setTimeout(() => {
+  movies.forEach((movie, index) => {
+      console.log(movie.title)
+  })
+}, 1000);
+}
+
+function createMovies(movie){
+return new Promise((resolve, reject) => { //tenemos el Resolve y el Reject. El resolve resuelve la promesa y la devuelve. Mientras que el reject, en el caso que exita un error, devuelve un mensaje de error
+  setTimeout(() => {
+      movies.push(movie);
+
+      const error = false;
+
+      if(!error){
+          resolve();
+      }
+      else{
+          reject('Error: Something went wrng!')
+      }
+  }, 2000);
 })
+}
 
-console.log('Acá estan las medications en una Array; ' + JSON.stringify(pushedMedications))
-
-
-
-let filteredMedications = pushedMedications.filter(function(el){
-    
-    return el["aceInhibitors"]
-})
-
-
-
-console.log(filteredMedications)
-//let aceInhibitors = pushedMedications[0].aceInhibitors
-
-
-
-
-
-
-/*let filteredAceInhibitors = aceInhibitors.filter(function(el){
-
-    return (el.name ==="lisinopril")
-})
-
-
-filteredAceInhibitors = filteredAceInhibitors[0]*/
-
-
-/*let nameInhibitor= filteredAceInhibitors.name;
-let strengthInhibitor= filteredAceInhibitors.strength;
-let doseInhibitor= filteredAceInhibitors.dose;
-let routeInhibitor = filteredAceInhibitors.route;
-let sigInhibitor = filteredAceInhibitors.sig;
-let pillCountInhibitor = filteredAceInhibitors.pillCount;
-let refillsInhibitor = filteredAceInhibitors.refills;*/
-
-
-//console.log(`${nameInhibitor}, ${strengthInhibitor}`)
-
-
-//console.log(`Esto eson los ace inhibitors:    ${aceInhibitors}`)
-//console.log(`Esto eson los filteredAceInhibitors:   ${JSON.stringify(filteredAceInhibitors)}`)
-
-
-
-//let example = ['Mello','Gary','Helen','Nol']
-//let searchExample = example.indexOf('Nol')
-
-
-
-
-//function searchNol(searchExample){
- // searchExample ===3 ? console.log('Es Nol') : console.log('Niidea rey')
-//}
-
-
-
-//console.log(searchNol(searchExample))
-//let position = pushedMedications.length;
-//console.log(JSON.stringify(pushedMedications[0]));
-//console.log(JSON.stringify(response.medications))
+createMovies({ title: `Return of the Jedi`, body:`Luke Skywalker attempts to bring his father back to the light side of the Force. At the same time, the rebels hatch a plan to destroy the second Death Star.`})
+.then(getMovies); // El .then lo que hace es que , luego de realizarse la promesa, se ejecute el getMovies()
