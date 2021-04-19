@@ -54,7 +54,7 @@ const response = {
                 "route":"PO",
                 "sig":"daily",
                 "pillCount":"#90",
-                "refills":"Refill 3"
+                "refills":"Reill 3"
             }]
         }
     ],
